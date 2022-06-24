@@ -10,9 +10,11 @@ RUN mvn -f pom.xml clean package
 
 FROM openjdk:11-jre-slim 
 
-COPY target/backend-0.0.1-SNAPSHOT.jar SNAPSHOT.jar
+RUN ls
 
 RUN ls target
+
+COPY target/backend-0.0.1-SNAPSHOT.jar SNAPSHOT.jar
 
 EXPOSE 8080
 
