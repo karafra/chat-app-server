@@ -1,0 +1,18 @@
+name: 'Submodule Notify Parent'
+
+on:
+  push:
+    branches:
+      - main    
+  workflow_dispatch:
+jobs:
+  notify:
+    name: 'Submodule Notify Parent'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Notify parent
+      run: |
+        curl --retry 3 -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token $CI_TOKEN"  "https://api.github.com/repos/karafra/chat-app/actions/workflows/update-submodules.yml/dispatches"  -d '{"ref":"main"}'
