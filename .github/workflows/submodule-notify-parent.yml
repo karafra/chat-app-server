@@ -15,4 +15,4 @@ jobs:
     steps:
     - name: Notify parent
       run: |
-        curl --retry 3 -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token $CI_TOKEN"  "https://api.github.com/repos/karafra/chat-app/actions/workflows/update-submodules.yml/dispatches"  -d '{"ref":"main"}'
+        curl --retry 3 -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token {{ secrets.CI_TOKEN }}"  "https://api.github.com/repos/karafra/chat-app/actions/workflows/update-submodules.yml/dispatches"  -d '{"ref":"main"}'
