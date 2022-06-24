@@ -12,6 +12,8 @@ FROM openjdk:11-jre-slim
 
 COPY target/backend-0.0.1-SNAPSHOT.jar SNAPSHOT.jar
 
+RUN ls target
+
 EXPOSE 8080
 
 CMD ["java", "-jar", "SNAPSHOT.jar"]
