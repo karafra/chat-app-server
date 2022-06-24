@@ -6,15 +6,13 @@ COPY pom.xml ./
 
 COPY src ./src
 
-RUN mvn -f pom.xml clean package
+RUN mvn -f pom.xml clean
 
-COPY target/backend-0.0.1-SNAPSHOT.jar SNAPSHOT.jar
-FROM openjdk:11-jre-slim 
+RUN mvn package
 
-RUN ls
+FROM openjdk:11-jre-slim
 
-RUN ls target
-
+COPY --from=build /app/target/backend-0.0.1-SNAPSHOT.jar ./SNAPSHOT.jar
 
 EXPOSE 8080
 
