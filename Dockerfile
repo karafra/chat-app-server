@@ -1,5 +1,11 @@
 FROM maven:3.6.0-jdk-11-slim AS build
 
+ARG VERSION
+
+LABEL name="chat-client"
+
+LABEL vesrion=VERSION
+
 WORKDIR /app
 
 COPY pom.xml ./
